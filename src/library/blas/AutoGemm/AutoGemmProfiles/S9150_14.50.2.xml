@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+<AutoGemmProfile name="S9150_14.50.2" version="1.0" source="library,user,local" >
+
+  <Device name="S9150" bandwidthGlobal="350" bandwidthLocal="3500" flopsSinglePrecision="5200" flopsDoublePrecision="2600" clockEngine="800" clockMemory="1600" />
+  <Driver version="14.50.2" />
+
+  <!-- SGEMM Kernel Selection Data -->
+  <SGEMM>
+    <PlanGroup>
+      <!-- Sizes -->
+      <SizeRange minM="0" maxM="128" modM="1" minN="0" maxN="128" modN="1" minK="128" maxK="1000" modK="1" minMN="0" maxMN="1000" /> <!-- all options -->
+      <SizeRange maxM="128" minMN="1000" /> <!-- skinny M -->
+      <SizeRange maxN="128" minMN="1000" /> <!-- skinny N -->
+      <SizeRange maxK="128" minMN="1000" /> <!-- small K -->
+      <!-- Plans -->
+      <Plan type="tile">
+        <SizeRange modM="80" modN="80" modK="8" />
+        <WorkGroup numRows="16" numCols="16" />
+        <MicroTile numRows="6"  numCols="6" />
+        <BuildOptions>-st-std=CL2.0</BuildOptions>
+      </Plan>
+      <Plan type="tile">
+        <SizeRange modM="80" modN="80" modK="8" />
+        <WorkGroup numRows="16" numCols="16" />
+        <MicroTile numRows="6"  numCols="6" />
+        <BuildOptions>-st-std=CL2.0</BuildOptions>
+      </Plan>
+      <Plan type="tile">
+        <SizeRange modM="80" modN="80" modK="8" />
+        <WorkGroup numRows="16" numCols="16" />
+        <MicroTile numRows="6"  numCols="6" />
+        <BuildOptions>-st-std=CL2.0</BuildOptions>
+      </Plan>
+      <Plan type="edge">
+        <SizeRange modM="4" modN="4" modK="4" />
+        <WorkGroup numRows="16" numCols="16" />
+        <MicroTile numRows="6"  numCols="6" />
+        <BuildOptions>-st-std=CL2.0</BuildOptions>
+      </Plan>
+      <Plan type="branch">
+        <WorkGroup numRows="16" numCols="16" />
+        <MicroTile numRows="6"  numCols="6" />
+        <BuildOptions>-st-std=CL2.0</BuildOptions>
+      </Plan>
+    </PlanGroup>
+  </SGEMM>
+
+</AutoGemmProfile>
+
