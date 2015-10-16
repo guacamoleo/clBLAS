@@ -108,11 +108,11 @@ if( NOT DEFINED clBLAS_VERSION_MAJOR )
 endif( )
 
 if( NOT DEFINED clBLAS_VERSION_MINOR )
-    set( clBLAS_VERSION_MINOR 7 )
+    set( clBLAS_VERSION_MINOR 8 )
 endif( )
 
 if( NOT DEFINED clBLAS_VERSION_PATCH )
-    set( clBLAS_VERSION_PATCH 1 )
+    set( clBLAS_VERSION_PATCH 0 )
 endif( )
 
 set( clBLAS_VERSION "${clBLAS_VERSION_MAJOR}.${clBLAS_VERSION_MINOR}.${clBLAS_VERSION_PATCH}")
@@ -199,7 +199,7 @@ if( BUILD_TEST )
 	    else()
 			find_package( Netlib COMPONENTS BLAS REQUIRED )
         endif()
-	else( )
+		else( )
 		# Find ACML BLAS implementation
 		# platform dependent ACML subdirectory
 		if (WIN32)
